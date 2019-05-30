@@ -24,6 +24,10 @@ Pin::Pin(QObject *parent)
 {
 }
 
+Pin::Pin(): QObject(nullptr), m_firmata(nullptr), m_pin(-1)
+{
+}
+
 void Pin::setFirmata(Firmata *firmata)
 {
 	Q_ASSERT(m_firmata == nullptr);

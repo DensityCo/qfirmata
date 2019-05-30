@@ -34,7 +34,7 @@ class Pin : public QObject
 	//! This must be set to a valid number (0-127) for the pin to work.
 	//! If autoInit is enabled, pinmode commands will be automatically
 	//! sent to configure the pin.
-	Q_PROPERTY(int pin READ pin WRITE setPin NOTIFY pinChanged)
+//	Q_PROPERTY(int pin READ pin WRITE setPin NOTIFY pinChanged)
 
 	//Q_ENUMS(IoMode)
 public:
@@ -45,7 +45,10 @@ public:
 	};
 	*/
 
-	explicit Pin(QObject *parent);
+        explicit Pin(QObject *parent);
+	Pin();
+        ~Pin() {}
+	
 
 	void setFirmata(Firmata *firmata);
 

@@ -29,8 +29,8 @@
 #include "src/backends/serialport.h"
 #include "src/backends/serialinfo.h"
 
-#include <qqml.h>
-
+//#include <qqml.h>
+#if 0
 static QObject *serialportlist_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
 	Q_UNUSED(engine);
@@ -56,4 +56,4 @@ void QmlFirmataPlugin::registerTypes(const char *uri)
     qmlRegisterType<SerialFirmata>(uri, 1, 0, "SerialFirmata");
 	qmlRegisterSingletonType<SerialPortList>(uri, 1, 0, "SerialPortList", serialportlist_provider);
 }
-
+#endif

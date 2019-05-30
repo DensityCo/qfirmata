@@ -22,7 +22,7 @@
 #include "pins/pin.h"
 
 #include <QObject>
-#include <QQmlListProperty>
+//#include <QQmlListProperty>
 
 //! A high level Firmata API for QML
 
@@ -86,8 +86,7 @@ public:
 
 	int samplingInterval() const;
 	void setSamplingInterval(int si);
-
-	QQmlListProperty<Pin> pins();
+	QList<Pin> pins();
 
 Q_SIGNALS:
 	void backendChanged();
@@ -121,10 +120,10 @@ private:
 	void sysexString(const QByteArray &data);
 	void sendSamplingInterval();
 
-	static void pinAdd(QQmlListProperty<Pin> *list, Pin *p);
-	static int pinCount(QQmlListProperty<Pin> *list);
-	static Pin* pinAt(QQmlListProperty<Pin> *list, int i);
-	static void pinClear(QQmlListProperty<Pin> *list);
+	static void pinAdd(QList<Pin> *list, Pin *p);
+	static int pinCount(QList<Pin> *list);
+	static Pin* pinAt(QList<Pin> *list, int i);
+	static void pinClear(QList<Pin> *list);
 
 	struct Private;
 	Private *d;

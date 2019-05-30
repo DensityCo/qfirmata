@@ -132,13 +132,12 @@ void Firmata::setInitPins(bool ip)
 		emit initPinsChanged(ip);
 	}
 }
-
-QQmlListProperty<Pin> Firmata::pins()
+QList<Pin> Firmata::pins()
 {
-	return QQmlListProperty<Pin>(this, nullptr, &pinAdd, &pinCount, &pinAt, &pinClear);
+	return QList<Pin>(this, nullptr, &pinAdd, &pinCount, &pinAt, &pinClear);
 }
 
-void Firmata::pinAdd(QQmlListProperty<Pin> *list, Pin *p)
+void Firmata::pinAdd(QList<Pin> *list, Pin *p)
 {
 	Firmata *f = static_cast<Firmata*>(list->object);
 	p->setFirmata(f);
@@ -150,19 +149,19 @@ void Firmata::pinAdd(QQmlListProperty<Pin> *list, Pin *p)
 	f->requestAnalogMappingIfNeeded();
 }
 
-int Firmata::pinCount(QQmlListProperty<Pin> *list)
+int Firmata::pinCount(QList<Pin> *list)
 {
 	Firmata *f = static_cast<Firmata*>(list->object);
 	return f->d->pins.size();
 }
 
-Pin *Firmata::pinAt(QQmlListProperty<Pin> *list, int i)
+Pin *Firmata::pinAt(QList<Pin> *list, int i)
 {
 	Firmata *f = static_cast<Firmata*>(list->object);
 	return f->d->pins.at(i);
 }
 
-void Firmata::pinClear(QQmlListProperty<Pin> *list)
+void Firmata::pinClear(QList<Pin> *list)
 {
 	Firmata *f = static_cast<Firmata*>(list->object);
 	for(Pin * p : f->d->pins)
